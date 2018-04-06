@@ -6,8 +6,7 @@ str= "something something i test this is stupid something i test it this is stup
 
 
 input = open("whateverYouWant.txt","r")
-str = input.readlines()
-str = ' '.join(str)
+str = ''.join(input.readlines())
 input.close()
 print str
 
