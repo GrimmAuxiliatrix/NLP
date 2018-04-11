@@ -1,28 +1,21 @@
 ### BIGRAM GENERATOR ###
-### PRINTS CORRESPONDING LISTS OF BIGRAMS AND ITS FREQUENCY IN THE STRING ###
-
-str= "something something i test this is stupid something i test it this is stupid. something something end test."
-#that was a really dumb sentence but I'm trying my best okay
-
+### PRINTS CORRESPONDING LISTS OF BIGRAM PHRASES, EACH FOLLOWED BY ITS FREQUENCY ###
 
 input = open("whateverYouWant.txt","r")
 str = ''.join(input.readlines())
 input.close()
-print str
 
 str = str.replace('.', ' -') #replaces periods with dashes to indicate the end of a sentence
 input_list = str.split()  
 bigram_list = []
-freq_list = []
 
 for i in range(len(input_list)-1):
     element= [input_list[i], input_list[i+1]]
     if element in bigram_list:
         ind = bigram_list.index(element)
-        freq_list[ind]+=1
+        bigram_list[ind+1]+=1
     else:
         bigram_list.append(element)
-        freq_list.append(1)
+        bigram_list.append(1)
         
 print(bigram_list)
-print(freq_list)
