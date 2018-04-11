@@ -1,3 +1,5 @@
+import random
+
 ### BIGRAM GENERATOR ###
 ### PRINTS CORRESPONDING LISTS OF BIGRAM PHRASES, EACH FOLLOWED BY ITS FREQUENCY ###
 
@@ -28,3 +30,25 @@ while i<len(bigram_list):
     i+=2
         
 print(bigram_list)
+
+def generate():
+    sentence = ""
+    random_index = 1
+    while(random_index%2!=0):
+        random_index = random.randrange(0,len(bigram_list))
+    sentence = bigram_list[random_index][0]
+    nxt = bigram_list[random_index][1]
+    while(nxt!="-"):
+        found = False
+        sentence+=" "+nxt
+        someOtherIndexIdk = 0
+        while(someOtherIndexIdk<len(bigram_list)-1):
+            if bigram_list[someOtherIndexIdk][0] == nxt:
+                nxt = bigram_list[someOtherIndexIdk][1]
+                someOtherIndexIdk = len(bigram_list)
+                found = True
+            someOtherIndexIdk+=2
+        if found == False:
+            nxt = "-"
+    print sentence
+    return
