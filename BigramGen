@@ -17,5 +17,14 @@ for i in range(len(input_list)-1):
     else:
         bigram_list.append(element)
         bigram_list.append(1)
+
+i= 1
+
+while i<len(bigram_list):
+    if bigram_list[i] == 1:
+        del bigram_list[i-1]
+        del bigram_list[i-1]
+        i-=2
+    i+=2
         
 print(bigram_list)
