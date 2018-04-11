@@ -31,9 +31,15 @@ while i<len(bigram_list):
         
 print(bigram_list)
 
+def sentence():
+    for x in range(0, 3):
+        generate()
+    return
+
 def generate():
     sentence = ""
     random_index = 1
+    prob = []
     while(random_index%2!=0):
         random_index = random.randrange(0,len(bigram_list))
     sentence = bigram_list[random_index][0]
@@ -44,11 +50,15 @@ def generate():
         someOtherIndexIdk = 0
         while(someOtherIndexIdk<len(bigram_list)-1):
             if bigram_list[someOtherIndexIdk][0] == nxt:
-                nxt = bigram_list[someOtherIndexIdk][1]
+                prob.append(bigram_list[someOtherIndexIdk][1])
                 someOtherIndexIdk = len(bigram_list)
                 found = True
             someOtherIndexIdk+=2
         if found == False:
             nxt = "-"
+        else:
+            ran = random.randrange(0, len(prob))
+            nxt = prob[ran]
     print sentence
     return
+
